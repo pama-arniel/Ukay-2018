@@ -1,0 +1,203 @@
+*{
+	margin:0;
+	padding:0;
+	border:0;
+}
+
+/* TEXT TYPE */
+.text-logo {
+	font-family: 'Adlery Pro';
+	font-size: 25px;
+}
+
+h1{
+	font-family: 'Circular Black';
+	margin-bottom: 20px;
+	font-size: 40px;
+}
+
+h2 {
+	font-family: 'Circular SemiBold';
+	margin-bottom: 10px;
+}
+
+p {
+	font-family: 'Open Sans';
+	margin-bottom: 30px;
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+/* The navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #000;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 9999;
+}
+
+/* Links inside the navbar */
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 12px 14px;
+    text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+    background: #ddd;
+    color: black;
+}
+
+/* The landing image */
+
+.landing-image{
+	background-image: url('../img/rsz_1landing-img.jpg');
+	margin-top: 58px;
+	width: 1366px;
+	height: 500px;
+	background-repeat: no-repeat;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.landing-image span{
+	font-family: 'AkkuratBoldBold';
+	margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 45px;
+    font-weight: bolder;
+}
+
+.landing-image a{
+	position: relative;
+	top: 65%;
+	margin: 20px 20px;
+}
+
+/*start of two buttons */
+
+.myButton {
+	background-color:#f95d91;
+	border-radius:25px;
+    box-shadow: 0px 18px 80px -10px grey;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Open Sans';
+	font-size:14px;
+	padding:16px 40px;
+    letter-spacing: 1.3px;
+	text-decoration:none;
+}
+.myButton:hover {
+	background-color:#f53da2;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.myButton2 {
+	background-color:#f5faf6;
+	border-radius:25px;
+	border:1px solid #1a031a;
+	display:inline-block;
+	cursor:pointer;
+	color:#1a031a;
+	font-family:Arial;
+	font-size:14px;
+	padding:16px 85px;
+	text-decoration:none;
+}
+.myButton2:hover {
+	background-color:#edf2ea;
+}
+.myButton2:active {
+	position:relative;
+	top:1px;
+}
+
+#content1{
+    background-color: #FFF;
+	float: left;
+	padding: 20px 60px;
+}
+
+#content2 {
+    float: left;
+    background: linear-gradient(to bottom right, #fe707c, #f85996);
+    padding: 40px 60px 20px 60px;
+}
+
+#features {
+    display: inline-block;
+    float: left;
+    min-width: 400px;
+    width: 30%;
+}
+
+#features h1 {
+    margin-bottom: 33px;
+    font-family: 'AkkuratBoldBold';
+}
+
+#features h2 {
+    margin-bottom: 2px;
+    font-family: 'AkkuratBoldBold';
+    font-size: 22px;
+}
+
+#features p {
+    font-family: 'Open Sans';
+    font-size: 18px;
+}
+
+#content3 {
+    background-color: #FFF;
+    text-align: center;
+}
+
+#sign-up {
+    display: inline-block;
+    margin: 45px auto;
+    padding: 10px;
+    width: 20%;
+}
+
+#sign-up h1 {
+    font-family: 'AkkuratBoldBold';
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+
+#sign-up h2 {
+    float: left;
+    font-family: 'AkkuratBoldBold';
+    font-size: 14px;
+    margin: 10px 0px 13px 0px;
+}
+
+#sign-up input[type=text] {
+    border: 2px solid #b8b8b8;
+    border-radius: 4px;
+    font-family: 'AkkuratRegular';
+    margin-bottom: 12px;
+    padding: 3px 10px;
+    height: 30px;
+    width: 90%;
+}
+
+#sign-up input[type=submit] {
+    padding: 14px 50px;
+    margin-top: 15px;
+}
