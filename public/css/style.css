@@ -171,6 +171,7 @@ p {
     display: inline-block;
     margin: 45px auto;
     padding: 10px;
+    min-width: 300px;
     width: 20%;
 }
 
