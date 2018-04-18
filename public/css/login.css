@@ -1,0 +1,124 @@
+*{
+	margin:0;
+	padding:0;
+	border:0;	 
+	
+}
+
+body {
+	background: #FFEBF3;
+}
+/* TEXT TYPE */
+.text-logo {
+	font-family: 'Adlery Pro';
+	font-size: 25px;
+}
+
+
+/* The navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #000;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 9999;
+}
+
+/* Links inside the navbar */
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 12px 14px;
+    text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+    background: #ddd;
+    color: black;
+}
+.nav-opt {
+	float: right;
+	margin-right: 100px;
+	display: block;
+}
+.nav-opt a {	
+	font-family: 'AkkuratBoldBold';
+	margin: 4px 4px;
+	font-size: 20px;
+	display: block;
+
+}
+
+.loginbox{
+	width: 320px;
+	height: 400px;
+	background: white;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	box-shadow: 2px 4px 40px #000;
+	padding: 70px 30px;	
+}
+
+form {
+	display: block;
+	text-align: center;
+}
+
+.loginbox h1 {
+    font-family: 'AkkuratBoldBold';
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.loginbox p {
+    float: left;
+    font-family: 'AkkuratBoldBold';
+    font-size: 10px;
+    margin: 10px 0px 13px 4.5px;
+}
+
+.loginbox input[type=text] {
+    border: 2px solid #FAB0D4;
+    border-radius: 4px;
+    font-family: 'AkkuratRegular';
+    margin-bottom: 12px;
+    padding: 3px 10px;
+    height: 30px;
+    width: 90%;
+}
+
+.loginbox input[type=submit] {
+    padding: 14px 50px;
+    margin-top: 15px;
+}
+
+.myButton {
+	background-color:#f95d91;
+	border-radius:25px;
+    box-shadow: 0px 18px 80px -10px grey;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Open Sans';
+	font-size:14px;
+    letter-spacing: 1.3px;
+	text-decoration:none;
+
+}
+.myButton:hover {
+	background-color:#f53da2;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+#sign-up{
+	color: #FAB0D4;
+}
