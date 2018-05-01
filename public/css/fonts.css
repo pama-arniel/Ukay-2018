@@ -24,12 +24,22 @@
 
 @font-face {
     font-family: 'Circular Black';
-    src: url("../fonts/circular-black.otf") format("opentype");
+    src: url("../fonts/circular/circular-black.otf") format("opentype");
 }
 
 @font-face {
     font-family: 'Circular Bold';
     src: url("../fonts/circular-bold.otf") format("opentype");
+}
+
+@font-face{
+    font-family: 'Circular Medium';
+    src: url("../fonts/circular/circular-medium.otf") format("opentype");
+}
+
+@font-face {
+    font-family: 'Circular Book';
+    src: url("../fonts/circular/circular-book.otf") format("opentype");
 }
 
 /* latin-ext */
