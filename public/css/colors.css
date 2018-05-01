@@ -1,3 +1,27 @@
+.bgcolor-pink {
+  background-color: #F54EA2;
+}
+
+.bgcolor-orange {
+  background-color: #FF7676;
+}
+
+.bgcolor-darkblue {
+  background-color: #65799B;
+}
+
+.bgcolor-darkpurple {
+  background-color: #5E2563;
+}
+
+.bgcolor-white {
+    background-color: #FFF;
+}
+
+.bgcolor-black {
+    background-color: #000;
+}
+
 .color-pink {
   color: #F54EA2;
 }
@@ -17,3 +41,4 @@
 .color-white {
     color: #FFFFFF;
 }
+

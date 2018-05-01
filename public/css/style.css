@@ -1,31 +1,31 @@
 *{
-	margin:0;
-	padding:0;
-	border:0;
+    margin:0;
+    padding:0;
+    border:0;
 }
 
 /* TEXT TYPE */
 .text-logo {
-	font-family: 'Adlery Pro';
-	font-size: 25px;
+    font-family: 'Adlery Pro';
+    font-size: 25px;
 }
 
 h1{
-	font-family: 'Circular Black';
-	margin-bottom: 20px;
-	font-size: 40px;
+    font-family: 'Circular Black';
+    margin-bottom: 20px;
+    font-size: 40px;
 }
 
 h2 {
-	font-family: 'Circular SemiBold';
-	margin-bottom: 10px;
+    font-family: 'Circular Medium';
+    margin-bottom: 10px;
 }
 
 p {
-	font-family: 'Open Sans';
-	margin-bottom: 30px;
-	text-align: justify;
-	text-justify: inter-word;
+    font-family: 'Open Sans';
+    margin-bottom: 30px;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* The navigation bar */
@@ -57,18 +57,18 @@ p {
 /* The landing image */
 
 .landing-image{
-	background-image: url('../img/rsz_1landing-img.jpg');
-	margin-top: 58px;
-	width: 1366px;
-	height: 500px;
-	background-repeat: no-repeat;
-	text-align: center;
-	margin-bottom: 15px;
+    background-image: url('../img/rsz_1landing-img.jpg');
+    margin-top: 58px;
+    width: 1366px;
+    height: 500px;
+    background-repeat: no-repeat;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 .landing-image span{
-	font-family: 'AkkuratBoldBold';
-	margin: 0;
+    font-family: 'AkkuratBoldBold';
+    margin: 0;
     position: absolute;
     top: 40%;
     left: 50%;
@@ -79,59 +79,59 @@ p {
 }
 
 .landing-image a{
-	position: relative;
-	top: 65%;
-	margin: 20px 20px;
+    position: relative;
+    top: 65%;
+    margin: 20px 20px;
 }
 
 /*start of two buttons */
 
 .myButton {
-	background-color:#f95d91;
-	border-radius:25px;
+    background-color:#f95d91;
+    border-radius:25px;
     box-shadow: 0px 18px 80px -10px grey;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family: 'Open Sans';
-	font-size:14px;
-	padding:16px 40px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: 'Open Sans';
+    font-size:14px;
+    padding:16px 40px;
     letter-spacing: 1.3px;
-	text-decoration:none;
+    text-decoration:none;
 }
 .myButton:hover {
-	background-color:#f53da2;
+    background-color:#f53da2;
 }
 .myButton:active {
-	position:relative;
-	top:1px;
+    position:relative;
+    top:1px;
 }
 
 .myButton2 {
-	background-color:#f5faf6;
-	border-radius:25px;
+    background-color:#f5faf6;
+    border-radius:25px;
     box-shadow: 0px 18px 80px -10px grey;
-	border: 0.4px solid #1a031a;
-	display:inline-block;
-	cursor:pointer;
-	color:#1a031a;
-	font-family:Arial;
-	font-size:14px;
-	padding:16px 85px;
-	text-decoration:none;
+    border: 0.4px solid #1a031a;
+    display:inline-block;
+    cursor:pointer;
+    color:#1a031a;
+    font-family:Arial;
+    font-size:14px;
+    padding:16px 85px;
+    text-decoration:none;
 }
 .myButton2:hover {
-	background-color:#edf2ea;
+    background-color:#edf2ea;
 }
 .myButton2:active {
-	position:relative;
-	top:1px;
+    position:relative;
+    top:1px;
 }
 
 #content1{
     background-color: #FFF;
-	float: left;
-	padding: 20px 60px;
+    float: left;
+    padding: 20px 60px;
 }
 
 #content2 {

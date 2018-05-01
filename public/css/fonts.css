@@ -28,8 +28,8 @@
 }
 
 @font-face {
-    font-family: 'Circular SemiBold';
-    src: url("../fonts/circular-semibold.otf") format("opentype");
+    font-family: 'Circular Bold';
+    src: url("../fonts/circular-bold.otf") format("opentype");
 }
 
 /* latin-ext */
