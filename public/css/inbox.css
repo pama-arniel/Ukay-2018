@@ -1,0 +1,255 @@
+*{
+    margin:0;
+    padding:0;
+    border:0;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+/*header*/
+header {
+    box-shadow: 0px -1px 20px 1px grey;
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    height: 58px;
+    width: 100%; /* Full width */
+    z-index: 9999;
+}
+
+header #logo {
+    padding: 12px 14px;
+    float: left;
+}
+
+header #logo a {
+    font-family: 'Adlery Pro';
+    font-size: 25px;
+    text-decoration: none;
+}
+
+header ul {
+    margin: 0;
+    padding: 0;
+}
+
+header li {
+    float: left;
+    display: inline;
+    padding: 0 40px;
+}
+
+header li a {
+    color: #2f2f2f;
+    font-family: 'AkkuratRegular';
+    font-size: 15px;
+    text-decoration: none;
+    letter-spacing: 0.1px;
+
+}
+
+header nav {
+    float: right;
+    margin-top: 21px;
+}
+
+header #profile-pic {
+    float: right;
+    width: 44px;
+    height: 44px;
+    margin: 7px 30px 0 40px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+
+header img {
+    display: inline-block;
+    margin: 0 0 0 -25px;
+    width: 100px;
+}
+
+
+nav li:hover {
+    background: #ddd;
+    color: #F54EA2;
+}
+
+
+/*Product Details*/
+#contact-list {
+    box-shadow: -1px 0px 10px -4px grey;
+    position: fixed;
+    margin: 55px 0 0 0;
+    float: left;
+    height: 100%;
+    width: 30%;
+}
+
+
+.container {
+    overflow-y: scroll;
+    height: calc(100% - 55px);
+    box-shadow: 2px 0px 10px -4px black;
+}
+
+.contact {
+  clear: left;
+  height: 100px;
+  box-shadow: 0 1px 1px -1px gray;
+
+}
+
+.contact-img {
+    float: left;
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 80%;
+    margin: 20px 10px;
+
+}
+
+.contact-img img{
+
+    /*display: inline-block;*/
+    width: 100px;
+    height: 70px;
+}
+
+.contact-content {
+    display: inline-block;
+    margin: 30px;
+    width:  60%;
+}
+
+.contact-name {
+    font-size: 20px;
+    font-family: 'AkkuratBoldBold';
+}
+
+.contact-msg {
+    font-family: 'Open Sans';   
+    font-size: 15px;
+    color: gray;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #bebebe;
+}
+
+
+
+
+
+#inbox {
+    width: 70%;
+    height: calc(100% - 58px);
+    float: right;
+    position: relative;
+    padding: 58px 0 0 0;
+    margin: 0;
+    text-align: center;
+}
+textarea {
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+    width: calc(100% - 100px);
+    height: 50px;
+    color:gray;
+    font-family: 'Open Sans';
+    font-size: 17px;
+    padding: 10px 0;
+}
+textarea:focus{
+    color: black;
+
+}
+
+.sendButton{
+    background: white;
+    width: 80px;
+    height: 100%;
+    padding: 15px;
+    cursor:pointer;
+    color:#255E63   ;
+    font-family: 'AkkuratBoldBold';
+    font-weight: bold;
+    font-size:17px;
+    margin-top: 5px;
+
+}
+
+.footer
+{
+    height:10px;
+    position:absolute;
+    bottom:10px;    
+}
+
+.msg-to{
+    float: right;
+    clear:left;
+    display: flex;
+    padding-left: 300px;
+    
+}
+
+.msg-to .msg-content {
+    order: 1;
+    background-color: #255E63;
+}
+.msg-to .contact-img {
+    order: 2;
+}
+
+
+
+
+.msg-from{
+    float: left;
+    clear:right;
+    display: flex;
+}
+.msg-from .msg-content {
+    order: 2;
+    background-color: #6C6C6C;
+}
+.msg-from .contact-img {
+    order: 1;
+}
+
+
+.msg-content {
+    margin: 20px 20px ;
+    padding: 20px;
+    max-width: 300px;
+    word-wrap: break-word;
+    color: white;
+    font-family: 'Open Sans';
+    font-size: 15px;
+    border-radius: 40px;
+
+}
