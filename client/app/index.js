@@ -12,6 +12,7 @@ import App from './components/App/App';
 import NotFound from './components/App/NotFound';
 
 import Home from './components/Home/Home';
+import About from './components/About/About';
 
 import HelloWorld from './components/HelloWorld/HelloWorld';
 
@@ -22,6 +23,7 @@ render((
     <App>
       <Switch>
         <Route exact path="/" component={Home}/>
+        <Route path="/about" component={About}/>
         <Route path="/helloworld" component={HelloWorld}/>
         <Route component={NotFound}/>
       </Switch>

@@ -65,7 +65,7 @@ module.exports = {
 
       // Fonts
       {
-        test: /\.(woff|woff2|eot|ttf|otf|png|jpg|gif)$/,
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
         loader: "file-loader"
       },
 
@@ -77,12 +77,12 @@ module.exports = {
 
       // Images
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif)$/i,
         use: [
           'url-loader?limit=10000',
           'img-loader'
         ]
-      }
+      },
     ]
   },
 

@@ -34,7 +34,7 @@ header ul {
 header li {
     float: left;
     display: inline;
-    padding: 0 40px;
+    padding: 0 20px;
 }
 
 header li a {
@@ -50,19 +50,13 @@ header nav {
     margin-top: 21px;
 }
 
-header #profile-pic {
-    float: right;
-    width: 44px;
-    height: 44px;
-    margin: 7px 30px 0 40px;
-    overflow: hidden;
-    border-radius: 50%;
-}
-
 header img {
-    display: inline-block;
-    margin: 0 0 0 -25px;
-    width: 100px;
+    float: right;
+    border-radius: 50%;
+    height: 80%;
+    margin: 10px 30px 0px 40px;
+    margin-top: 7px;
+    margin-left: 30px;
 }
 
 /* TEXT TYPE */
@@ -237,4 +231,122 @@ p {
 #sign-up input[type=submit] {
     padding: 14px 50px;
     margin-top: 15px;
+}
+
+/* class in main tag */
+.main {
+  padding: 88px;
+}
+
+.prodlist{
+  margin-bottom: 75px;
+}
+
+.prodlist_itemlist{
+  white-space: nowrap;
+}
+
+.nowrap_scroll{
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+.prodlist_header_text{
+  font-size: 1.3ch;
+}
+
+.prodlist_item{
+  margin: 10px;
+  margin-bottom: 30px;
+  display: inline-grid;
+  padding: 30px;
+  box-shadow: 0px 10px 15px #ffffff;
+  border-radius: 10px;
+
+  transition: 0.5s;
+}
+
+.prodlist_item:hover{
+  box-shadow: 0px 10px 30px #E8E8E8;
+  transform: translate3d(0px, -3px, 0px);
+}
+
+.prodlist_label_details{
+  overflow: hidden;
+}
+
+.prodlist_label_details_itemtype{
+  font-size: smaller;
+}
+
+.prodlist_label_details_title{
+  width: 250px;
+  font-weight: bold;
+  font-size: large;
+  text-overflow: ellipsis;
+  margin-bottom: 3px;
+}
+
+.prodlist_label_details_location{
+  margin-top:0;
+  height: 30px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+
+  font-size: small;
+}
+
+.prodlist_label_details_price{
+  margin-top:3px;
+  margin-bottom:3px;
+}
+
+.center-cropped {
+  position: relative;
+  width: 250px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* Set the image to fill its parent and make transparent */
+.center-cropped img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+
+.larger-font{
+  font-size: larger;
+}
+
+#style-2::-webkit-scrollbar-track
+{
+  background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar
+{
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-color: #DDDDDD;
+  transition: 0.5s;
+}
+
+#style-2::-webkit-scrollbar-thumb:hover
+{
+  border-radius: 10px;
+  background-color: #999999;
 }

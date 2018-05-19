@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
-import HeaderLanding from '../Header/HeaderLanding';
+import Header from '../Header/Header';
+import Trending from './Trending';
+import Recommended from './Recommended';
+import Latest from './Latest';
 import Landing from '../Landing/Landing';
 
 import {
@@ -239,8 +242,11 @@ class Home extends Component {
     if (!token) {
       return (
         <div>
-          <HeaderLanding/>
-          <Landing/>
+          <main className="main">
+            <Trending/>
+            <Recommended/>
+            <Latest/>
+          </main>
         </div>
       );
     }
