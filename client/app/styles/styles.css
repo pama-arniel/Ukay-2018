@@ -370,3 +370,16 @@ p {
   border-radius: 10px;
   background-color: #999999;
 }
+
+.sell-wrapper{
+  min-width: 50%;
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.photo-item{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
