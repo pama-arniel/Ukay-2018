@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
+import HeaderLanding from '../Header/HeaderLanding';
+import Landing from '../Landing/Landing';
+
 import {
   getFromStorage,
   setInStorage,
@@ -236,64 +239,8 @@ class Home extends Component {
     if (!token) {
       return (
         <div>
-          <div>
-            {
-              (signInError) ? (
-                <p>{signInError}</p>
-              ) : (null)
-            }
-            <p>Sign In</p>
-            <input
-              type="email"
-              placeholder="Email"
-              value={signInEmail}
-              onChange={this.onTextboxChangeSignInEmail}
-            />
-            <br/>
-            <input
-              type="password"
-              placeholder="Password"
-              value={signInPassword}
-              onChange={this.onTextboxChangeSignInPassword}
-            />
-            <br/>
-            <button onClick={this.onSignIn}>Sign In</button>
-          </div>
-          <br/>
-          <br/>
-          <div>
-            {
-              (signUpError) ? (
-                <p>{signUpError}</p>
-              ) : (null)
-            }
-            <p>Sign Up</p>
-            <input
-              type="text"
-              placeholder="First Name"
-              value={signUpFirstName}
-              onChange={this.onTextboxChangeSignUpFirstName}
-            /><br/>
-            <input
-              type="text"
-              placeholder="Last Name"
-              value={signUpLastName}
-              onChange={this.onTextboxChangeSignUpLastName}
-            /><br/>
-            <input
-              type="email"
-              placeholder="Email"
-              value={signUpEmail}
-              onChange={this.onTextboxChangeSignUpEmail}
-            /><br/>
-            <input
-              type="password"
-              placeholder="Password"
-              value={signUpPassword}
-              onChange={this.onTextboxChangeSignUpPassword}
-            /><br/>
-            <button onClick={this.onSignUp}>Sign Up</button>
-          </div>
+          <HeaderLanding/>
+          <Landing/>
         </div>
       );
     }
