@@ -6,7 +6,7 @@ import {
   setInStorage,
 } from '../../utils/storage';
 
-class Sell extends Component {
+class Signin extends Component {
     constructor(props) {
         super(props);
 
@@ -363,4 +363,4 @@ class Sell extends Component {
     }
 }
 
-export default Sell;
+export default Sign;
