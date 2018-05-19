@@ -24,12 +24,15 @@ class Sell extends Component {
           signUpLocation: '',
         };
 
+        this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(this);
+        this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(this);
         this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
         this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
         this.onTextboxChangeSignUpFirstName = this.onTextboxChangeSignUpFirstName.bind(this);
         this.onTextboxChangeSignUpLastName = this.onTextboxChangeSignUpLastName.bind(this);
         this.onTextboxChangeSignUpLocation = this.onTextboxChangeSignUpLocation.bind(this);
 
+        this.onSignIn = this.onSignIn.bind(this);
         this.onSignUp = this.onSignUp.bind(this);
     }
 
@@ -58,6 +61,18 @@ class Sell extends Component {
           });
         }
     }
+
+  onTextboxChangeSignInEmail(event) {
+    this.setState({
+      signInEmail: event.target.value,
+    });
+  }
+
+  onTextboxChangeSignInPassword(event) {
+    this.setState({
+      signInPassword: event.target.value,
+    });
+  }
 
   onTextboxChangeSignUpEmail(event) {
     this.setState({
@@ -140,6 +155,48 @@ class Sell extends Component {
       });
   }
 
+  onSignIn() {
+    // Grab state
+    const {
+      signInEmail,
+      signInPassword
+    } = this.state;
+
+    this.setState({
+      isLoading: true,
+
+    })
+
+    // Post request to backend
+    fetch('/api/account/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: signInEmail,
+        password: signInPassword,
+      })
+    }).then(res => res.json())
+      .then(json => {
+        if (json.success) {
+          setInStorage('the_main_app', { token: json.token });
+          this.setState({
+            signInError: json.message,
+            isLoading: false,
+            signInPassword: '',
+            signInEmail: '',
+            token: json.token,
+          });
+        } else {
+          this.setState({
+            signInError: json.message,
+            isLoading: false,
+          });
+        }
+      });
+  }
+
     render() {
         const {
           isLoading,
@@ -155,57 +212,97 @@ class Sell extends Component {
           signUpLocation,
         } = this.state;
 
-
+        console.log(token);
 
         if (!token) {
             return (
-                <div id="content3">
-                    <div id="sign-up">
-                        <h1>Join Ukay now</h1>
-                        <form>
-                            <h2>Fill in the form below</h2><br/>
-                            <input
-                                type="text"
-                                placeholder="First Name"
-                                value={signUpFirstName}
-                                onChange={this.onTextboxChangeSignUpFirstName}
-                            />
-                            <br/>
-                            <input
-                                type="text"
-                                placeholder="Last Name"
-                                value={signUpLastName}
-                                onChange={this.onTextboxChangeSignUpLastName}
-                            />
-                            <br/>
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                value={signUpEmail}
-                                onChange={this.onTextboxChangeSignUpEmail}
-                            />
-                            <br/>
-                            <input
-                                type="password"
-                                placeholder="Password"
-                                value={signUpPassword}
-                                onChange={this.onTextboxChangeSignUpPassword}
-                            />
-                            <br/>
-                            <input
-                                type="text"
-                                placeholder="Location"
-                                value={signUpLocation}
-                                onChange={this.onTextboxChangeSignUpLocation}
-                            />
-                            <br/>
-                            <input
-                                type="submit"
-                                value="SIGN UP"
-                                className="myButton"
-                                onClick={this.onSignUp}
-                            />
-                        </form>
+                <div>
+                    <div id="content3">
+                        {
+                          (signUpError) ? (
+                            <p>{signUpError}</p>
+                          ) : (null)
+                        }
+                        <div id="sign-up">
+                            <h1>Join Ukay now</h1>
+                            <form>
+                                <h2>Fill in the form below</h2><br/>
+                                <input
+                                    type="text"
+                                    placeholder="First Name"
+                                    value={signUpFirstName}
+                                    onChange={this.onTextboxChangeSignUpFirstName}
+                                />
+                                <br/>
+                                <input
+                                    type="text"
+                                    placeholder="Last Name"
+                                    value={signUpLastName}
+                                    onChange={this.onTextboxChangeSignUpLastName}
+                                />
+                                <br/>
+                                <input
+                                    type="email"
+                                    placeholder="Email"
+                                    value={signUpEmail}
+                                    onChange={this.onTextboxChangeSignUpEmail}
+                                />
+                                <br/>
+                                <input
+                                    type="password"
+                                    placeholder="Password"
+                                    value={signUpPassword}
+                                    onChange={this.onTextboxChangeSignUpPassword}
+                                />
+                                <br/>
+                                <input
+                                    type="text"
+                                    placeholder="Location"
+                                    value={signUpLocation}
+                                    onChange={this.onTextboxChangeSignUpLocation}
+                                />
+                                <br/>
+                                <input
+                                    type="submit"
+                                    value="SIGN UP"
+                                    className="myButton"
+                                    onClick={this.onSignUp}
+                                />
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="content3">
+                        {
+                          (signInError) ? (
+                            <p>{signInError}</p>
+                          ) : (null)
+                        }
+                        <div id="sign-up">
+                            <h1>Log-in</h1>
+                            <form>
+                                <input
+                                    type="email"
+                                    placeholder="Email"
+                                    value={signInEmail}
+                                    onChange={this.onTextboxChangeSignInEmail}
+                                />
+                                <br/>
+                                <input
+                                    type="password"
+                                    placeholder="Password"
+                                    value={signInPassword}
+                                    onChange={this.onTextboxChangeSignInPassword}
+                                />
+                                <br/>
+                                <input
+                                    type="submit"
+                                    value="SIGN IN"
+                                    className="myButton"
+                                    onClick={this.onSignIn}
+                                />
+                            </form>
+                        </div>
                     </div>
                 </div>
             );
