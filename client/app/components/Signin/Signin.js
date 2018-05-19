@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
+import { Redirect } from 'react-router-dom';
+
 import {
   getFromStorage,
   setInStorage,
@@ -214,6 +216,10 @@ class Signin extends Component {
 
         console.log(token);
 
+        if (isLoading) {
+          return (<div><p>Loading...</p></div>);
+        }
+
         if (!token) {
             return (
                 <div>
@@ -309,58 +315,9 @@ class Signin extends Component {
         }
 
         return (
-            <div>
-              <main className="main">
-                  <div className="sell-wrapper">
-                    <h1 className="circular_black_font">Sell your clothes</h1>
-                    <h3 className="circular_font"> Add photos of your product </h3>
-                    <div className="photo-list">
-                      <div className="center-cropped photo-item" style={{backgroundColor: 'gray', display: 'inline-block'}}>
-                        <img src={require("../../../public/assets/img/items.jpg")} className="prodlist_item_thumbnail"/>
-                      </div>
-                      <div className="center-cropped photo-item" style={{backgroundColor: '#BBBBBB', display: 'inline-block'}}>
-                        <i className="material-icons" style={{margin: 'auto', fontSize: '100px', textAlign: 'center', alignContent: 'center', width: '100%', lineHeight: '200px'}}>camera_alt</i>
-                      </div>
-                    </div>
-
-                    <form action="#">
-                      <div className="mdl-textfield mdl-js-textfield">
-                        <input className="mdl-textfield__input circular_font" type="text" id="title"/>
-                        <label className="mdl-textfield__label circular_font" htmlFor="title">Name of your clothing</label>
-                      </div>
-                      <br/>
-                      <div className="mdl-textfield mdl-js-textfield">
-                        <input className="mdl-textfield__input circular_font" type="text" id="type"/>
-                        <label className="mdl-textfield__label circular_font" htmlFor="type">Category</label>
-                      </div>
-                      <br/>
-                      <div className="mdl-textfield mdl-js-textfield">
-                        <input className="mdl-textfield__input circular_font" type="text" id="prov"/>
-                        <label className="mdl-textfield__label circular_font" htmlFor="prov">Province</label>
-                      </div>
-                      <br/>
-                      <div className="mdl-textfield mdl-js-textfield">
-                        <input className="mdl-textfield__input circular_font" type="text" id="bar"/>
-                        <label className="mdl-textfield__label circular_font" htmlFor="bar">City</label>
-                      </div>
-                      <br/>
-                      <div className="mdl-textfield mdl-js-textfield">
-                        <input className="mdl-textfield__input circular_font" type="number" id="price"/>
-                        <label className="mdl-textfield__label circular_font" htmlFor="price">Price</label>
-                      </div>
-                      <br/>
-                      <div className="mdl-textfield mdl-js-textfield">
-                        <textarea className="mdl-textfield__input circular_font" type="text" rows="3" id="description"/>
-                        <label className="mdl-textfield__label circular_font" htmlFor="description">Description</label>
-                      </div>
-                      <br/><br/>
-                      <input className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit" value="Submit"/>
-                    </form>
-                  </div>
-              </main>
-            </div>
+            <Redirect to="/sell"/>
         );
     }
 }
 
-export default Sign;
+export default Signin;

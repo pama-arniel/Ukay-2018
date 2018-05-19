@@ -12,6 +12,7 @@ import App from './components/App/App';
 import NotFound from './components/App/NotFound';
 
 import Home from './components/Home/Home';
+import Signin from './components/Signin/Signin';
 import Sell from './components/Sell/Sell';
 import About from './components/About/About';
 
@@ -22,6 +23,7 @@ render((
     <App>
       <Switch>
         <Route exact path="/" component={Home}/>
+        <Route path="/signin" component={Signin}/>
         <Route path="/sell" component={Sell}/>
         <Route path="/about" component={About}/>
         <Route component={NotFound}/>

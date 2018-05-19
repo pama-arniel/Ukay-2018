@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
+import { Redirect } from 'react-router-dom';
+
 import {
   getFromStorage,
   setInStorage,
@@ -13,27 +15,23 @@ class Sell extends Component {
         this.state = {
           isLoading: true,
           token: '',
-          signUpError: '',
-          signInError: '',
-          signInEmail: '',
-          signInPassword: '',
-          signUpFirstName: '',
-          signUpLastName: '',
-          signUpEmail: '',
-          signUpPassword: '',
-          signUpLocation: '',
+          name: '',
+          category: '',
+          province: '',
+          city: '',
+          price: '',
+          description: '',
+          sellError: ''
         };
 
-        this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(this);
-        this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(this);
-        this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
-        this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
-        this.onTextboxChangeSignUpFirstName = this.onTextboxChangeSignUpFirstName.bind(this);
-        this.onTextboxChangeSignUpLastName = this.onTextboxChangeSignUpLastName.bind(this);
-        this.onTextboxChangeSignUpLocation = this.onTextboxChangeSignUpLocation.bind(this);
+        this.onTextboxChangeName = this.onTextboxChangeName.bind(this);
+        this.onTextboxChangeCategory = this.onTextboxChangeCategory.bind(this);
+        this.onTextboxChangeProvince = this.onTextboxChangeProvince.bind(this);
+        this.onTextboxChangeCity = this.onTextboxChangeCity.bind(this);
+        this.onTextboxChangePrice = this.onTextboxChangePrice.bind(this);
+        this.onTextboxChangeDescription = this.onTextboxChangeDescription.bind(this);
 
-        this.onSignIn = this.onSignIn.bind(this);
-        this.onSignUp = this.onSignUp.bind(this);
+        this.onSell = this.onSell.bind(this);
     }
 
     componentDidMount() {
@@ -62,254 +60,119 @@ class Sell extends Component {
         }
     }
 
-  onTextboxChangeSignInEmail(event) {
-    this.setState({
-      signInEmail: event.target.value,
-    });
-  }
-
-  onTextboxChangeSignInPassword(event) {
-    this.setState({
-      signInPassword: event.target.value,
-    });
-  }
-
-  onTextboxChangeSignUpEmail(event) {
-    this.setState({
-      signUpEmail: event.target.value,
-    });
-  }
-
-  onTextboxChangeSignUpPassword(event) {
-    this.setState({
-      signUpPassword: event.target.value,
-    });
-  }
-
-  onTextboxChangeSignUpFirstName(event) {
-    this.setState({
-      signUpFirstName: event.target.value,
-    });
-  }
-
-  onTextboxChangeSignUpLastName(event) {
-    this.setState({
-      signUpLastName: event.target.value,
-    });
-  }
-
-  onTextboxChangeSignUpLocation(event) {
-    this.setState({
-        signUpLocation: event.target.value,
-    });
-  }
-
-  onSignUp() {
-    // Grab state
-    const {
-      signUpFirstName,
-      signUpLastName,
-      signUpEmail,
-      signUpPassword,
-      signUpLocation
-    } = this.state;
-
-    this.setState({
-      isLoading: true,
-
-    })
-
-    // Post request to backend
-    fetch('/api/account/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        firstName: signUpFirstName,
-        lastName: signUpLastName,
-        email: signUpEmail,
-        password: signUpPassword,
-        location: signUpLocation,
-      })
-    }).then(res => res.json())
-      .then(json => {
-        if (json.success) {
-          setInStorage('the_main_app', { token: json.token });
-          this.setState({
-            signUpError: json.message,
-            isLoading: false,
-            signUpEmail: '',
-            signUpPassword: '',
-            signUpFirstName: '',
-            signUpLastName: '',
-            signUpLocation: '',
-            token: json.token,
-          });
-        } else {
-          this.setState({
-            signUpError: json.message,
-            isLoading: false,
-          });
-        }
+    onTextboxChangeName(event) {
+      this.setState({
+        name: event.target.value,
       });
-  }
+    }
 
-  onSignIn() {
-    // Grab state
-    const {
-      signInEmail,
-      signInPassword
-    } = this.state;
-
-    this.setState({
-      isLoading: true,
-
-    })
-
-    // Post request to backend
-    fetch('/api/account/signin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: signInEmail,
-        password: signInPassword,
-      })
-    }).then(res => res.json())
-      .then(json => {
-        if (json.success) {
-          setInStorage('the_main_app', { token: json.token });
-          this.setState({
-            signInError: json.message,
-            isLoading: false,
-            signInPassword: '',
-            signInEmail: '',
-            token: json.token,
-          });
-        } else {
-          this.setState({
-            signInError: json.message,
-            isLoading: false,
-          });
-        }
+    onTextboxChangeCategory(event) {
+      this.setState({
+        category: event.target.value,
       });
-  }
+    }
+
+    onTextboxChangeProvince(event) {
+      this.setState({
+        province: event.target.value,
+      });
+    }
+
+    onTextboxChangeCity(event) {
+      this.setState({
+        city: event.target.value,
+      });
+    }
+
+    onTextboxChangePrice(event) {
+      this.setState({
+        price: event.target.value,
+      });
+    }
+
+    onTextboxChangeDescription(event) {
+      this.setState({
+        description: event.target.value,
+      });
+    }
+
+    onSell() {
+      // Grab state
+      const {
+        name,
+        category,
+        province,
+        city,
+        price,
+        description
+      } = this.state;
+
+      // Post request to backend
+      fetch('/api/product/sellproduct', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          category: category,
+          province: province,
+          city: city,
+          price: price,
+          description: description
+        })
+      }).then(res => res.json())
+        .then(json => {
+          if (json.success) {
+            this.setState({
+              sellError: json.message,
+              name: '',
+              category: '',
+              province: '',
+              city: '',
+              price: '',
+              description: '',
+            });
+          } else {
+            this.setState({
+              sellError: json.message,
+            });
+          }
+        });
+    }
 
     render() {
         const {
           isLoading,
           token,
-          signInError,
-          signInEmail,
-          signInPassword,
-          signUpFirstName,
-          signUpLastName,
-          signUpEmail,
-          signUpPassword,
-          signUpError,
-          signUpLocation,
+          name,
+          category,
+          province,
+          city,
+          price,
+          description,
+          sellError
         } = this.state;
 
         console.log(token);
 
+        if (isLoading) {
+          return (<div><p>Loading...</p></div>);
+        }
+
         if (!token) {
             return (
-                <div>
-                    <div id="content3">
-                        {
-                          (signUpError) ? (
-                            <p>{signUpError}</p>
-                          ) : (null)
-                        }
-                        <div id="sign-up">
-                            <h1>Join Ukay now</h1>
-                            <form>
-                                <h2>Fill in the form below</h2><br/>
-                                <input
-                                    type="text"
-                                    placeholder="First Name"
-                                    value={signUpFirstName}
-                                    onChange={this.onTextboxChangeSignUpFirstName}
-                                />
-                                <br/>
-                                <input
-                                    type="text"
-                                    placeholder="Last Name"
-                                    value={signUpLastName}
-                                    onChange={this.onTextboxChangeSignUpLastName}
-                                />
-                                <br/>
-                                <input
-                                    type="email"
-                                    placeholder="Email"
-                                    value={signUpEmail}
-                                    onChange={this.onTextboxChangeSignUpEmail}
-                                />
-                                <br/>
-                                <input
-                                    type="password"
-                                    placeholder="Password"
-                                    value={signUpPassword}
-                                    onChange={this.onTextboxChangeSignUpPassword}
-                                />
-                                <br/>
-                                <input
-                                    type="text"
-                                    placeholder="Location"
-                                    value={signUpLocation}
-                                    onChange={this.onTextboxChangeSignUpLocation}
-                                />
-                                <br/>
-                                <input
-                                    type="submit"
-                                    value="SIGN UP"
-                                    className="myButton"
-                                    onClick={this.onSignUp}
-                                />
-                            </form>
-                        </div>
-                    </div>
-
-                    <div id="content3">
-                        {
-                          (signInError) ? (
-                            <p>{signInError}</p>
-                          ) : (null)
-                        }
-                        <div id="sign-up">
-                            <h1>Log-in</h1>
-                            <form>
-                                <input
-                                    type="email"
-                                    placeholder="Email"
-                                    value={signInEmail}
-                                    onChange={this.onTextboxChangeSignInEmail}
-                                />
-                                <br/>
-                                <input
-                                    type="password"
-                                    placeholder="Password"
-                                    value={signInPassword}
-                                    onChange={this.onTextboxChangeSignInPassword}
-                                />
-                                <br/>
-                                <input
-                                    type="submit"
-                                    value="SIGN IN"
-                                    className="myButton"
-                                    onClick={this.onSignIn}
-                                />
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <Redirect to="/signin"/>
             );
         }
 
         return (
             <div>
+            {
+              (sellError) ? (
+                <p>{sellError}</p>
+              ) : (null)
+            }
               <main className="main">
                   <div className="sell-wrapper">
                     <h1 className="circular_black_font">Sell your clothes</h1>
@@ -325,36 +188,78 @@ class Sell extends Component {
 
                     <form action="#">
                       <div className="mdl-textfield mdl-js-textfield">
-                        <input className="mdl-textfield__input circular_font" type="text" id="title"/>
-                        <label className="mdl-textfield__label circular_font" htmlFor="title">Name of your clothing</label>
+                        <input
+                          className="mdl-textfield__input circular_font"
+                          type="text"
+                          placeholder="Name of your clothing"
+                          id="title"
+                          value={name}
+                          onChange={this.onTextboxChangeName}
+                        />
                       </div>
                       <br/>
                       <div className="mdl-textfield mdl-js-textfield">
-                        <input className="mdl-textfield__input circular_font" type="text" id="type"/>
-                        <label className="mdl-textfield__label circular_font" htmlFor="type">Category</label>
+                        <input
+                          className="mdl-textfield__input circular_font"
+                          type="text"
+                          placeholder="Category"
+                          id="type"
+                          value={category}
+                          onChange={this.onTextboxChangeCategory}
+                        />
                       </div>
                       <br/>
                       <div className="mdl-textfield mdl-js-textfield">
-                        <input className="mdl-textfield__input circular_font" type="text" id="prov"/>
-                        <label className="mdl-textfield__label circular_font" htmlFor="prov">Province</label>
+                        <input
+                          className="mdl-textfield__input circular_font"
+                          type="text"
+                          placeholder="Province"
+                          id="prov"
+                          value={province}
+                          onChange={this.onTextboxChangeProvince}
+                        />
                       </div>
                       <br/>
                       <div className="mdl-textfield mdl-js-textfield">
-                        <input className="mdl-textfield__input circular_font" type="text" id="bar"/>
-                        <label className="mdl-textfield__label circular_font" htmlFor="bar">City</label>
+                        <input
+                          className="mdl-textfield__input circular_font"
+                          type="text"
+                          placeholder="City"
+                          id="bar"
+                          value={city}
+                          onChange={this.onTextboxChangeCity}
+                        />
                       </div>
                       <br/>
                       <div className="mdl-textfield mdl-js-textfield">
-                        <input className="mdl-textfield__input circular_font" type="number" id="price"/>
-                        <label className="mdl-textfield__label circular_font" htmlFor="price">Price</label>
+                        <input
+                          className="mdl-textfield__input circular_font"
+                          type="number"
+                          placeholder="Price"
+                          id="price"
+                          value={price}
+                          onChange={this.onTextboxChangePrice}
+                        />
                       </div>
                       <br/>
                       <div className="mdl-textfield mdl-js-textfield">
-                        <textarea className="mdl-textfield__input circular_font" type="text" rows="3" id="description"/>
-                        <label className="mdl-textfield__label circular_font" htmlFor="description">Description</label>
+                        <textarea
+                          className="mdl-textfield__input circular_font"
+                          type="text"
+                          placeholder="Description"
+                          rows="3"
+                          id="description"
+                          value={description}
+                          onChange={this.onTextboxChangeDescription}
+                        />
                       </div>
                       <br/><br/>
-                      <input className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit" value="Submit"/>
+                      <input
+                        className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+                        type="submit"
+                        value="Submit"
+                        onClick={this.onSell}
+                      />
                     </form>
                   </div>
               </main>
