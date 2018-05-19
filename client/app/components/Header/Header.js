@@ -20,7 +20,7 @@ class Header extends Component {
                   <a href="" className="color-pink">UKAY</a>
               </div>
 
-              <img src={require('../../../public/assets/img/default-profile-pic.jpg')} alt="Profile Picture"/>
+              <NavLink to="/profile" exact><img src={require('../../../public/assets/img/default-profile-pic.jpg')} alt="Profile Picture"/></NavLink>
 
               <nav>
                   <ul>

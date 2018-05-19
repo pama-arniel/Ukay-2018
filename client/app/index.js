@@ -15,6 +15,7 @@ import Home from './components/Home/Home';
 import Signin from './components/Signin/Signin';
 import Sell from './components/Sell/Sell';
 import About from './components/About/About';
+import Profile from './components/Profile/Profile';
 
 import './styles/styles.scss';
 
@@ -26,6 +27,7 @@ render((
         <Route path="/signin" component={Signin}/>
         <Route path="/sell" component={Sell}/>
         <Route path="/about" component={About}/>
+        <Route path="/profile" component={Profile}/>
         <Route component={NotFound}/>
       </Switch>
     </App>
