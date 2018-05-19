@@ -12,7 +12,8 @@ module.exports = (app) => {
     const {
       firstName,
       lastName,
-      password
+      password,
+      location
     } = body;
     let {
       email
@@ -40,6 +41,12 @@ module.exports = (app) => {
       return res.send({
         success: false,
         message: 'Error: Password cannot be blank.'
+      });
+    }
+    if (!location) {
+      return res.send({
+        success: false,
+        message: 'Error: Location cannot be blank.'
       });
     }
 
@@ -72,6 +79,8 @@ module.exports = (app) => {
       newUser.firstName = firstName;
       newUser.lastName = lastName;
       newUser.password = newUser.generateHash(password);
+      newUser.location = location;
+
       newUser.save((err, user) => {
         if (err) {
           return res.send({
@@ -79,9 +88,22 @@ module.exports = (app) => {
             message: 'Error: Server Error'
           });
         }
-        return res.send({
-          success: true,
-          message: 'Signed up'
+
+        const userSession = new UserSession();
+        userSession.userId = user._id;
+        userSession.save((err, doc) => {
+          if (err) {
+            return res.send({
+              success: false,
+              message: 'Error: server error'
+            });
+          }
+
+          return res.send({
+            success: true,
+            message: 'Valid sign up',
+            token: doc._id
+          });
         });
       });
     });
