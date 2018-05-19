@@ -42,21 +42,6 @@ class About extends Component {
                         <p>Si vous voulez utiliser un passage du Lorem Ipsum, vous devez etre sur qu'il n'ya rien d'embarassment cache dans le texte.</p>
                     </div>
                 </div>
-
-                <div id="content3">
-                    <div id="sign-up">
-                        <h1>Join Ukay now</h1>
-                        <form>
-                            <h2>Fill in the form below</h2><br/>
-                            <input type="text" name="firstname" placeholder="First Name"/><br/>
-                            <input type="text" name="lastname" placeholder="Last Name"/><br/>
-                            <input type="text" name="email" placeholder="Email"/><br/>
-                            <input type="text" name="password" placeholder="Password"/><br/>
-                            <input type="text" name="location" placeholder="Location"/><br/>
-                            <input type="submit" value="SIGN UP" className="myButton"/>
-                        </form>
-                    </div>
-                </div>
             </div>
         );
     }

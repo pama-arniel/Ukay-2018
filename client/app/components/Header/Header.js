@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => (
   // <header>
@@ -22,9 +22,9 @@ const Header = () => (
 
             <nav>
                 <ul>
-                    <li><a href="" className="color-pink">Sell a product</a></li>
-                    <li><a href="">About Ukay</a></li>
-                    <li><a href="">Explore</a></li>
+                    <li><a href="">Sell a product</a></li>
+                    <li><NavLink to="/about" exact activeStyle={{color: '#F54EA2'}}>About Ukay</NavLink></li>
+                    <li><NavLink to="/" exact activeStyle={{color: '#F54EA2'}}>Explore</NavLink></li>
                     <li><a href="">Wish List</a></li>
                     <li><a href="inbox.html">Inbox</a></li>
                 </ul>
