@@ -25,7 +25,8 @@ module.exports = (app) => {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 email: user.email,
-                location: user.location
+                location: user.location,
+                productsToSell: user.productsToSell
             })
         });
     });

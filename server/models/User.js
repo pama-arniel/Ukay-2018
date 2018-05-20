@@ -22,6 +22,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
+  productsToSell: [mongoose.Schema.Types.ObjectId],
   isDeleted: {
     type: Boolean,
     default: false

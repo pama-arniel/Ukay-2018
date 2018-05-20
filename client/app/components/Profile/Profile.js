@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 
 import { Redirect } from 'react-router-dom';
+const queryString = require('queryString');
 
 import {
   getFromStorage,
   setInStorage,
 } from '../../utils/storage';
+
+const Product = (props) => (
+    <div className="post">
+        <img className="post-picture"/>
+        <div className="post-desc">
+            <span className="category">{props.category}</span>&nbsp;
+            <span className="post-title">{props.name}</span>
+            <span className="location">{props.province}, {props.city}</span>
+            <span className="cost">PHP {props.price}</span>
+        </div>
+    </div>
+);
 
 class Profile extends Component {
     constructor(props) {
@@ -19,6 +32,7 @@ class Profile extends Component {
           email: '',
           location: '',
           description: 'Tell us more about you',
+          productsToSell: []
         };
     }
 
@@ -47,10 +61,22 @@ class Profile extends Component {
                     firstName: json.firstName,
                     lastName: json.lastName,
                     email: json.email,
-                    location: json.location
-                  })
+                    location: json.location,
+                  });
+                  console.log(json.productsToSell);
+                  fetch('/api/product/details?productsId=' + json.productsToSell)
+                  .then(res => res.json())
+                  .then(json => {
+                    console.log(json.message);
+                    if (json.success) {
+                      console.log(json.productsToSell);
+                      this.setState({
+                        productsToSell: json.productsToSell
+                      });
+                    }
+                  });
                 }
-              })
+              });
 
             } else {
               this.setState({
@@ -73,7 +99,8 @@ class Profile extends Component {
             lastName,
             email,
             location,
-            description
+            description,
+            productsToSell
         } = this.state;
 
         if (isLoading) {
@@ -84,6 +111,18 @@ class Profile extends Component {
             return (
                 <Redirect to={"/signin/profile"}/>
             );
+        }
+
+        let products = [];
+        for (let i = 0; i < productsToSell.length; i++) {
+          products.push(<Product
+                          key={i}
+                          name={productsToSell[i].name}
+                          category={productsToSell[i].category}
+                          province={productsToSell[i].province}
+                          city={productsToSell[i].city}
+                          price={productsToSell[i].price}
+                        />)
         }
 
         return (
@@ -108,26 +147,7 @@ class Profile extends Component {
                     </div>
                 </div>
                 <div className="timeline">
-                    <div className="post">
-                        <img className="post-picture"/>
-                        <div className="post-desc">
-                            <span className="category">MEN'S SHIRTS</span>&nbsp;&#8226;
-                            <span className="type">CASUAL</span>
-                            <span className="post-title">This is a header that a seller might type</span>
-                            <span className="location">Cebu City, Cebu</span>
-                            <span className="cost">PHP 1,4900.00</span>
-                        </div>
-                    </div>
-                    <div className="post">
-                        <img className="post-picture"/>
-                        <div className="post-desc">
-                            <span className="category">MEN'S SHIRTS</span>&nbsp;&#8226;
-                            <span className="type">CASUAL</span>
-                            <span className="post-title">This is a header that a seller might type</span>
-                            <span className="location">Cebu City, Cebu</span>
-                            <span className="cost">PHP 1,4900.00</span>
-                        </div>
-                    </div>
+                    {products}
                 </div>
             </div>
         );

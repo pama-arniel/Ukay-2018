@@ -13,7 +13,7 @@ module.exports = (app) => {
       firstName,
       lastName,
       password,
-      location
+      location,
     } = body;
     let {
       email

@@ -15,6 +15,7 @@ class Sell extends Component {
         this.state = {
           isLoading: true,
           token: '',
+          userId: '',
           name: '',
           category: '',
           province: '',
@@ -45,6 +46,7 @@ class Sell extends Component {
             if (json.success) {
               this.setState({
                 token,
+                userId: json.userId,
                 isLoading: false
               });
             } else {
@@ -99,6 +101,7 @@ class Sell extends Component {
     onSell() {
       // Grab state
       const {
+        userId,
         name,
         category,
         province,
@@ -114,6 +117,7 @@ class Sell extends Component {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+          userId: userId,
           name: name,
           category: category,
           province: province,
@@ -123,6 +127,7 @@ class Sell extends Component {
         })
       }).then(res => res.json())
         .then(json => {
+          console.log(json.message);
           if (json.success) {
             this.setState({
               sellError: json.message,
