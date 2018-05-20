@@ -17,6 +17,7 @@ import Sell from './components/Sell/Sell';
 import About from './components/About/About';
 import Profile from './components/Profile/Profile';
 import Product from './components/Product/Product';
+import Inbox from './components/Inbox/Inbox';
 
 import './styles/styles.scss';
 
@@ -30,6 +31,7 @@ render((
         <Route path="/about" component={About}/>
         <Route path="/profile" component={Profile}/>
         <Route path="/product/:id" component={Product}/>
+        <Route path="/inbox" component={Inbox}/>
         <Route component={NotFound}/>
       </Switch>
     </App>

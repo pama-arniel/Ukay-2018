@@ -28,7 +28,7 @@ class Header extends Component {
                       <li><NavLink to="/about" exact activeStyle={{color: '#F54EA2'}}>About Ukay</NavLink></li>
                       <li><NavLink to="/" exact activeStyle={{color: '#F54EA2'}}>Explore</NavLink></li>
                       <li><a href="">Wish List</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
+                      <li><NavLink to="/inbox" exact activeStyle={{color: '#F54EA2'}}>Inbox</NavLink></li>
                   </ul>
               </nav>
           </header>
