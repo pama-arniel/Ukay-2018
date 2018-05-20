@@ -18,6 +18,7 @@ class Profile extends Component {
           lastName: '',
           email: '',
           location: '',
+          description: 'Tell us more about you',
         };
     }
 
@@ -30,10 +31,27 @@ class Profile extends Component {
           .then(res => res.json())
           .then(json => {
             if (json.success) {
+              console.log(json.message);
               this.setState({
                 token,
                 isLoading: false
               });
+              // Get user profile details
+              console.log(json.userId);
+              fetch('/api/user/profile?userId=' + json.userId)
+              .then(res => res.json())
+              .then(json => {
+                console.log(json.message);
+                if (json.success) {
+                  this.setState({
+                    firstName: json.firstName,
+                    lastName: json.lastName,
+                    email: json.email,
+                    location: json.location
+                  })
+                }
+              })
+
             } else {
               this.setState({
                 isLoading: false
@@ -54,7 +72,8 @@ class Profile extends Component {
             firstName,
             lastName,
             email,
-            location
+            location,
+            description
         } = this.state;
 
         if (isLoading) {
@@ -72,10 +91,10 @@ class Profile extends Component {
                 <div className="profile">
                     <img id="picture"/>
                     <div className="details">
-                        <span className="name">Margaret dela Croix</span>
-                        <span className="email">mjdelacroix@gmail.com</span>
-                        <span className="bio">chic diva | aesthetic queen | needs my daily sip of tea</span>
-                        <span className="location">Manila City, NCR</span>
+                        <span className="name">{firstName} {lastName}</span>
+                        <span className="email">{email}</span>
+                        <span className="bio">{description}</span>
+                        <span className="location">{location}</span>
                     </div>
                 </div>
                 <div className="two-links">

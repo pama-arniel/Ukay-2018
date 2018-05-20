@@ -202,9 +202,11 @@ module.exports = (app) => {
           message: 'Error: Invalid'
         });
       } else {
+        const session = sessions[0];
         return res.send({
           success: true,
-          message: 'Good'
+          message: 'Good',
+          userId: session.userId
         });
       }
     });
