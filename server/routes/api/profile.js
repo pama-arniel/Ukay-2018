@@ -27,7 +27,7 @@ module.exports = (app) => {
                 email: user.email,
                 location: user.location,
                 productsToSell: user.productsToSell
-            })
+            });
         });
     });
 }

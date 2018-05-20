@@ -458,7 +458,7 @@ p {
   margin-bottom: 25px;
 }
 .post-picture{
-  content: url('../../public/assets/img/clothes1.jpg');
+  content: url('../../public/assets/img/cardigan-clothes-sweater.jpg');
   border-radius: 8px;
   height: 130px;
   width: 200px;
@@ -485,4 +485,180 @@ p {
 .cost{
   font-family: 'AkkuratBoldBold';
   color: #F54EA2;
+}
+
+/*Slideshow*/
+#product-slideshow {
+    width: 70%;
+    height: calc(100% - 58px);
+    float: left;
+    position: fixed;
+    padding: 58px 0 0 0;
+    margin: 0;
+    text-align: center;
+}
+
+.imgbox {
+    display: grid;
+    height: 100%
+}
+
+.center-fit {
+    height: 100%;
+    max-height: 100vh;
+    max-width: 100%;
+    margin: auto;
+}
+
+.slide {
+    display: none;
+}
+
+.dot {
+    top: -50px;
+    position: relative;
+    margin: 0 10px;
+    cursor: pointer;
+    height: 8px;
+    width: 8px;
+    border: 1px solid white;
+    background-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #fff;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 0.5s;
+    animation-name: fade;
+    animation-duration: 0.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .9}
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .9}
+    to {opacity: 1}
+}
+
+/*Product Details*/
+#product-details {
+    box-shadow: -1px 0px 10px -4px grey;
+    position: relative;
+    margin: 58px 0 0 0;
+    float: right;
+    height: 100%;
+    width: 30%;
+}
+
+#product-details h1 {
+    font-family: 'Circular Black';
+    font-size: 40px;
+}
+
+.container {
+    overflow-y: scroll;
+    height: calc(100% - 78px);
+    padding: 10px 25px 10px 10px;
+}
+
+#category {
+    font-family: 'AkkuratBoldBold';
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+}
+
+#product-name {
+    padding: 0;
+    margin: 0;
+}
+
+.map-marker {
+    display: inline-block;
+    float: left;
+    width: 11px;
+}
+
+.map-marker path {
+    fill: #6c6c6c;
+}
+
+#product-location {
+    display: inline-block;
+    font-family: 'AkkuratBoldBold';
+    text-transform: uppercase;
+    padding: 5px 0;
+    margin: 0;
+    color: #6c6c6c;
+}
+
+#product-price {
+    color:  #F54EA2;
+    padding: 5px 0;
+    margin-bottom: 20px;
+}
+
+#product-description {
+    font-family: 'Open Sans';
+    color: #3d3d3d;
+    padding: 0;
+    margin: 0;
+}
+
+#product-description p {
+    margin-bottom: 30px;
+}
+
+#comment-label {
+    font-family: 'Circular Black';
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.comment {
+    padding: 5px 0;
+    margin: 0;
+}
+
+.commenter {
+    color:  #F54EA2;
+    font-family: 'Open Sans';
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.comment-body {
+    color: #969696;
+    font-family: 'Open Sans';
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #bebebe;
 }

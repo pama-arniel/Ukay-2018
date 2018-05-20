@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const random = require('mongoose-simple-random');
 
 const ProductSchema = new mongoose.Schema({
   name: {
@@ -27,5 +28,6 @@ const ProductSchema = new mongoose.Schema({
   },
   comments: [mongoose.Schema.Types.ObjectId]
 });
+ProductSchema.plugin(random);
 
 module.exports = mongoose.model('Product', ProductSchema);

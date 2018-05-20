@@ -10,7 +10,7 @@ import {
 
 const Product = (props) => (
     <div className="post">
-        <img className="post-picture"/>
+        <img className="post-picture" onClick={() => props.onClickProduct(props.id)}/>
         <div className="post-desc">
             <span className="category">{props.category}</span>&nbsp;
             <span className="post-title">{props.name}</span>
@@ -27,6 +27,8 @@ class Profile extends Component {
         this.state = {
           isLoading: true,
           token: '',
+          redirectToProduct: false,
+          redirectToProductId: '',
           firstName: '',
           lastName: '',
           email: '',
@@ -34,6 +36,8 @@ class Profile extends Component {
           description: 'Tell us more about you',
           productsToSell: []
         };
+
+        this.onClickProduct = this.onClickProduct.bind(this);
     }
 
     componentDidMount() {
@@ -71,7 +75,7 @@ class Profile extends Component {
                     if (json.success) {
                       console.log(json.productsToSell);
                       this.setState({
-                        productsToSell: json.productsToSell
+                        productsToSell: json.products
                       });
                     }
                   });
@@ -91,10 +95,18 @@ class Profile extends Component {
         }
     }
 
+    onClickProduct(id) {
+      this.setState({
+          redirectToProduct: true,
+          redirectToProductId: id
+      });
+    }
+
     render() {
         const {
             isLoading,
             token,
+            redirectToProduct,
             firstName,
             lastName,
             email,
@@ -113,15 +125,23 @@ class Profile extends Component {
             );
         }
 
+        if (redirectToProduct) {
+            return (
+                <Redirect to={"/product/" + this.state.redirectToProductId}/>
+            );
+        }
+
         let products = [];
         for (let i = 0; i < productsToSell.length; i++) {
           products.push(<Product
                           key={i}
+                          id={productsToSell[i]._id}
                           name={productsToSell[i].name}
                           category={productsToSell[i].category}
                           province={productsToSell[i].province}
                           city={productsToSell[i].city}
                           price={productsToSell[i].price}
+                          onClickProduct={this.onClickProduct}
                         />)
         }
 
