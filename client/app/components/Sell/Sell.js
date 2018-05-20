@@ -162,7 +162,7 @@ class Sell extends Component {
 
         if (!token) {
             return (
-                <Redirect to="/signin"/>
+                <Redirect to={"/signin/sell"}/>
             );
         }
 

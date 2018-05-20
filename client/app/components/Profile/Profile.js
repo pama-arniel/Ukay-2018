@@ -1,11 +1,72 @@
 import React, { Component } from 'react';
 
+import { Redirect } from 'react-router-dom';
+
+import {
+  getFromStorage,
+  setInStorage,
+} from '../../utils/storage';
+
 class Profile extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+          isLoading: true,
+          token: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          location: '',
+        };
+    }
+
+    componentDidMount() {
+        const obj = getFromStorage('the_main_app');
+        if (obj && obj.token) {
+          const { token } = obj;
+          // Verify the token
+          fetch('/api/account/verify?token=' + token)
+          .then(res => res.json())
+          .then(json => {
+            if (json.success) {
+              this.setState({
+                token,
+                isLoading: false
+              });
+            } else {
+              this.setState({
+                isLoading: false
+              })
+            }
+          });
+        } else {
+          this.setState({
+            isLoading: false,
+          });
+        }
     }
 
     render() {
+        const {
+            isLoading,
+            token,
+            firstName,
+            lastName,
+            email,
+            location
+        } = this.state;
+
+        if (isLoading) {
+          return (<div><p>Loading...</p></div>);
+        }
+
+        if (!token) {
+            return (
+                <Redirect to={"/signin/profile"}/>
+            );
+        }
+
         return (
             <div id="wrapper">
                 <div className="profile">

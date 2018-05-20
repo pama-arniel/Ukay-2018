@@ -24,7 +24,7 @@ render((
     <App>
       <Switch>
         <Route exact path="/" component={Home}/>
-        <Route path="/signin" component={Signin}/>
+        <Route path="/signin/:to" component={Signin}/>
         <Route path="/sell" component={Sell}/>
         <Route path="/about" component={About}/>
         <Route path="/profile" component={Profile}/>

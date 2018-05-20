@@ -314,8 +314,9 @@ class Signin extends Component {
             );
         }
 
+        console.log(this.props.params);
         return (
-            <Redirect to="/sell"/>
+            <Redirect to={"/" + this.props.match.params.to}/>
         );
     }
 }
